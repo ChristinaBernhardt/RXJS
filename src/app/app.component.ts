@@ -11,6 +11,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AppComponent  implements OnInit {
   title = 'codingdojo';
+  course: string = '0';
 
   constructor(private httpClient: HttpClient) {
     // This service can now make HTTP requests via `this.http`.
@@ -19,7 +20,12 @@ export class AppComponent  implements OnInit {
   ngOnInit(): void {
     this.httpClient.get('https://data-api.binance.vision/api/v3/ticker/price?symbol=BTCUSDT').subscribe((data) => {
       console.log(data);
+      this.course = data;
+
     });
   }
+
+
+
 }
 
