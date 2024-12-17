@@ -17,7 +17,9 @@ export class AppComponent  implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.httpClient.get('https://data-api.binance.vision/api/v3/ticker/price?symbol=BTCUSDT').subscribe((data) => {
+      console.log(data);
+    });
   }
 }
 
