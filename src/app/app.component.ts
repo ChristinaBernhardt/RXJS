@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 
+
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
@@ -17,10 +19,20 @@ export class AppComponent  implements OnInit {
     // This service can now make HTTP requests via `this.http`.
   }
 
+
+
   ngOnInit(): void {
+
+    type CourseResponse = {
+      price: number,
+      symbol: string
+
+    }
+
     this.httpClient.get('https://data-api.binance.vision/api/v3/ticker/price?symbol=BTCUSDT').subscribe((data) => {
       console.log(data);
-      this.course = data['price'] as number;
+      let dataResponse = data as CourseResponse;
+      this.course = dataResponse['price'];
 
     });
   }
